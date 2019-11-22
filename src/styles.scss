@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+/* Add application styles & imports to this file! */
+
+@import '~@addapptables/core/addapptables-grid.theme';
+@import '~@addapptables/alert/addapptables-alert.theme';
+@import '~@angular/material/theming';
+@import '~@addapptables/card/addapptables-card.theme';
+@import '~@addapptables/notifier/_addapptables-notifier.theme';
+
+$addapptable-app-primary: mat-palette($mat-teal, 800);
+$addapptable-app-accent:  mat-palette($mat-pink, 800, A100, 100);
+$addapptable-app-warn: mat-palette($mat-red);
+$addapptable-app-theme: mat-light-theme($addapptable-app-primary, $addapptable-app-accent, $addapptable-app-warn);
+
+$addapptable-theme-variables: (
+    text: white,
+    border-radius: 5px,
+    color-blue: #20a9d2,
+    color-success: #5cb85c,
+    color-info: #5bc0de,
+    color-warning: #e09d3d,
+    color-danger: #d43934,
+    gray-color: #696868
+);
+body {
+  background-color: #eeeeee;
+}
+body.theme-default{
+  @include angular-material-theme($addapptable-app-theme);
+  @include addapptable-alert($addapptable-theme-variables);
+}
+
+@include mat-core();
+@include angular-material-theme($addapptable-app-theme);
+@include addapptable-card($addapptable-app-theme, $addapptable-theme-variables);
+@include addapptable-alert($addapptable-theme-variables);
+@include addapptable-notifier($addapptable-app-theme, $addapptable-theme-variables);
